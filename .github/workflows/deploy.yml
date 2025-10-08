@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 env:
-  TF_WORKING_DIR: ./terraform
+  TF_WORKING_DIR: ./.terraform
   TF_PLAN_FILE: plan.binary
 
 permissions:
