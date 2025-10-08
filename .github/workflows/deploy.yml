@@ -72,7 +72,7 @@ jobs:
 
       # ---- tfsec ----
       - name: Run tfsec
-        uses: aquasecurity/tfsec-pr-commenter-action
+        uses: aquasecurity/tfsec-pr-commenter-action@v1.3.0
         with:
           directory: ${{ env.TF_WORKING_DIR }}
           format: sarif
