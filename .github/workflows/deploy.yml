@@ -64,11 +64,11 @@ jobs:
           tflint --init
           tflint --format sarif --out tflint.sarif || true
 
-      - name: Upload TFLint results
-        if: always()
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: ${{ env.TF_WORKING_DIR }}/tflint.sarif
+     # - name: Upload TFLint results
+      #  if: always()
+       # uses: github/codeql-action/upload-sarif@v3
+        #with:
+         # sarif_file: ${{ env.TF_WORKING_DIR }}/tflint.sarif 
 
       # ---- tfsec ----
       - name: Run tfsec
@@ -79,11 +79,11 @@ jobs:
           output: ${{ env.TF_WORKING_DIR }}/tfsec.sarif
         continue-on-error: false
 
-      - name: Upload tfsec results
-        if: always()
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: ${{ env.TF_WORKING_DIR }}/tfsec.sarif
+      #- name: Upload tfsec results
+       # if: always()
+      # uses: github/codeql-action/upload-sarif@v3
+       # with:
+         # sarif_file: ${{ env.TF_WORKING_DIR }}/tfsec.sarif
 
       # ---- Checkov ----
       - name: Install Checkov
@@ -96,12 +96,12 @@ jobs:
         run: |
           checkov -d . --quiet --output-file-path checkov.json --output json || true
 
-      - name: Upload Checkov report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: checkov-report
-          path: ${{ env.TF_WORKING_DIR }}/checkov.json
+      #- name: Upload Checkov report
+      #  if: always()
+       # uses: actions/upload-artifact@v4
+      #  with:
+       #   name: checkov-report
+       #   path: ${{ env.TF_WORKING_DIR }}/checkov.json
 
   plan-and-apply:
     name: Terraform plan & apply
